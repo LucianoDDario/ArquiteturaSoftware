@@ -1,184 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Aula07</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="" />
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <title>Aula07</title>
-</head>
-
-<body>
-  <div>
-
-    <h1>Formulário</h1>
-
-    <div style="display: grid; gap: 5px">
-      <div class="colunaCampos">
-        <label>Nome completo:</label>
-        <input type="text" name="campo" id="nome" required />
-      </div>
-
-      <div class="infoNascTel">
-        <div class="colunaCampos">
-          <label>Data de Nascimento:</label>
-          <input type="date" name="campo" id="data" required />
-        </div>
-  
-        <div class="colunaCampos">
-          <label>Telefone:</label>
-          <input type="tel" name="campo" id="telefone" required />
-        </div>
-      </div>
-
-      <div class="colunaCampos">
-        <label>E-mail:</label>
-        <input type="email" name="campo" id="email" required />
-      </div>
-
-      <div class="colunaCampos">
-        <label>Senha:</label>
-        <input type="password" name="campo" id="senha" required />
-      </div>
-    </div>
-
-    <div class="fotoAtual" style="display: flex; gap: 5px; align-items: center">
-      <h1>Foto atual:</h1>
-      <div style="margin-left: 30px">
-        <input type="file" class="foto" required />
-      </div>
-    </div>
-
+  <body>
     <div>
+      <h1>Formulário</h1>
 
-      <h1>Em que moeda prefere trabalhar?</h1>
-
-      <div style="display: grid; gap: 2px">
-        <div class="coluna">
-          <input type="radio" name="moeda" id="real" /><label for="real">Real</label>
+      <div class="formularioDados">
+        <div class="colunaCampos">
+          <label>Nome completo:</label>
+          <input type="text" name="campo" id="nome" required />
         </div>
 
-        <div class="coluna">
-          <input type="radio" name="moeda" id="dolar" /><label for="dolar">Dolar</label>
+        <div class="infoNascTel">
+          <div class="colunaCampos">
+            <label>Data de Nascimento:</label>
+            <input type="date" name="campo" id="data" required />
+          </div>
+
+          <div class="colunaCampos">
+            <label>Telefone:</label>
+            <input type="tel" name="campo" id="telefone" required />
+          </div>
         </div>
 
-        <div class="coluna">
-          <input type="radio" name="moeda" id="euro" /><label for="euro">Euro</label>
+        <div class="colunaCampos">
+          <label>E-mail:</label>
+          <input type="email" name="campo" id="email" required />
         </div>
 
-        <div class="coluna">
-          <input type="radio" name="moeda" id="yen" /><label for="yen">Yen</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="experiencia">
-
-      <h1>Selecione as linguagens que já estudou:</h1>
-
-      <div style="display: grid; gap: 2px">
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="c" />
-          <label for="c">C</label>
-        </div>
-
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="c++" />
-          <label for="c++">C++</label>
-        </div>
-
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="html" />
-          <label for="html">HTML</label>
-        </div>
-
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="java" />
-          <label for="java">Java</label>
-        </div>
-
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="javascript" />
-          <label for="javascript">Javascript</label>
-        </div>
-
-        <div class="coluna">
-          <input type="checkbox" name="linguaem" id="python" />
-          <label for="python">Python</label>
+        <div class="colunaCampos">
+          <label>Senha:</label>
+          <input type="password" name="campo" id="senha" required />
         </div>
       </div>
-    </div>
 
-    <div class="assuntosFavoritos">
-      <h1>Seus assuntos favoritos:</h1>
-      <form class="assuntos">
-        <select name="assuntos" id="assunto" multiple required>
-          <option value="Artes">Artes</option>
-          <option value="Artes">Esportes</option>
-          <option value="Artes">Games</option>
-          <option value="Artes">Música</option>
-        </select>
-      </form>
-    </div>
-    <div class="comentarios">
-      <h1>Gostaria de fazer comentários?</h1>
-      <div class="campoComentarios">
-        <textarea name="comentarios" id="comentarios"></textarea>
+      <div class="fotoAtual">
+        <h1>Foto atual:</h1>
+        <div>
+          <input type="file" class="foto" required />
+        </div>
+      </div>
+
+      <div>
+        <h1>Em que moeda prefere trabalhar?</h1>
+
+        <div class="formularioMoeda">
+          <div class="colunaMoeda">
+            <input type="radio" name="moeda" id="real" /><label for="real">Real</label>
+          </div>
+
+          <div class="colunaMoeda">
+            <input type="radio" name="moeda" id="dolar" /><label for="dolar">Dolar</label>
+          </div>
+
+          <div class="colunaMoeda">
+            <input type="radio" name="moeda" id="euro" /><label for="euro">Euro</label>
+          </div>
+
+          <div class="colunaMoeda">
+            <input type="radio" name="moeda" id="yen" /><label for="yen">Yen</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="formularioExperiencia">
+        <h1>Selecione as linguagens que já estudou:</h1>
+
+        <div>
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="c" />
+            <label for="c">C</label>
+          </div>
+
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="c++" />
+            <label for="c++">C++</label>
+          </div>
+
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="html" />
+            <label for="html">HTML</label>
+          </div>
+
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="java" />
+            <label for="java">Java</label>
+          </div>
+
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="javascript" />
+            <label for="javascript">Javascript</label>
+          </div>
+
+          <div class="colunaExperiencia">
+            <input type="checkbox" name="linguaem" id="python" />
+            <label for="python">Python</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="formularioAssuntos">
+        <h1>Seus assuntos favoritos:</h1>
+        <form class="assuntos">
+          <select name="assuntos" id="assunto" multiple required>
+            <option value="Artes">Artes</option>
+            <option value="Artes">Esportes</option>
+            <option value="Artes">Games</option>
+            <option value="Artes">Música</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="formularioComentarios">
+        <h1>Gostaria de fazer comentários?</h1>
+        <div class="campoComentarios">
+          <textarea name="comentarios" id="comentarios"></textarea>
+        </div>
+      </div>
+
+      <div class="formularioBotoes">
+        <button id="enviar">Enviar</button>
+        <button id="limpar">Limpar</button>
       </div>
     </div>
-    <div class="botoes">
-      <button id="enviar">Enviar</button>
-      <button id="limpar">Limpar</button>
-    </div>
-  </div>
-</body>
+  </body>
 
-<style>
-  .colunaCampos{
-    display: flex;
-    flex-direction: column;
-  }
+  <style>
+    .colunaCampos {
+      display: flex;
+      flex-direction: column;
+    }
 
-  .infoNascTel {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
+    .infoNascTel {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
 
-  .botoes {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-  }
-</style>
+    .botoes {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+    }
+  </style>
 
-<script>
-  $(document).ready(function () {
-    $("#limpar").click(function () {
-      $("#nome").val("");
-      $("#email").val("");
-      $("#senha").val("");
-      $("#telefone").val("");
-      $("#data").val("");
-    });
-
-    $("#enviar").click(function () {
-      let camposPreenchidos = true;
-
-      $("input[name='campo']").each(function () {
-        if ($(this).val === "") {
-          camposPreenchidos = false;
-        }
+  <script>
+    $(document).ready(function () {
+      $("#limpar").click(function () {
+        $("#nome").val("");
+        $("#email").val("");
+        $("#senha").val("");
+        $("#telefone").val("");
+        $("#data").val("");
       });
 
-      if (!camposPreenchidos) {
-        alert("Preencha todos os campos");
-      } else {
-        alert("Enviado");
-      }
-    });
-  });
-</script>
+      $("#enviar").click(function () {
+        let camposPreenchidos = true;
 
+        $("input[name='campo']").each(function () {
+          if ($(this).val === "") {
+            camposPreenchidos = false;
+          }
+        });
+
+        if (!camposPreenchidos) {
+          alert("Preencha todos os campos");
+        } else {
+          alert("Enviado");
+        }
+      });
+    });
+  </script>
 </html>
