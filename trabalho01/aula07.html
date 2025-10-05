@@ -162,18 +162,71 @@
       });
 
       $("#enviar").click(function () {
-        let camposPreenchidos = true;
+        const nome = $("#nome").val();
+        const email = $("#email").val();
+        const senha = $("#senha").val();
+        const telefone = $("#telefone").val();
+        const dataNascimento = $("#data").val();
 
-        $("input[name='campo']").each(function () {
-          if ($(this).val === "") {
-            camposPreenchidos = false;
-          }
-        });
-
-        if (!camposPreenchidos) {
+        if (!nome || !email || !senha || !telefone || !dataNascimento) {
           alert("Preencha todos os campos");
+        }
+
+        const regexContemNumero = /\d/;
+        const regexDuasPalavras = /^\p{L}+(\s+\p{L}+)+$/u;
+        const regexEmailCorreto = /[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/gim;
+        const regexSenhaCorreta = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{10,30}$/;
+        const regexTelefoneCorreto = /^\d{2} \d{9}$/;
+
+        if (regexContemNumero.test(nome)) {
+          alert("Nome não pode conter número");
+        } else if (!regexDuasPalavras.test(nome)) {
+          alert("Nome completo precisa de no mínimo duas palavras");
+        } else if (!regexEmailCorreto.test(email)) {
+          alert("E-mail não está correto");
+        } else if (!regexSenhaCorreta.test(senha)) {
+          alert(
+            "A senha precisa ter no mínimo 10 caracteres, sendo pelo menos 1 número, um caractere especial e uma letra maiuscula"
+          );
+        } else if (!regexTelefoneCorreto.test(telefone)) {
+          alert("O telefone precisa estar no formato 19 999998888");
         } else {
-          alert("Enviado");
+          const dataEscrita = new Date(dataNascimento + "T00:00:00");
+          const dataMinima = new Date("1980-01-01T00:00:00");
+          const dataMaxima = new Date("2005-12-31T00:00:00");
+
+          if (dataEscrita < dataMinima || dataEscrita > dataMaxima) {
+            alert("A data de nascimento precisa estar entre 01/01/1980 e 31/12/2005");
+          } else {
+            const pessoa = new Object();
+            pessoa.nomeCompleto = nome;
+            pessoa.email = email;
+            pessoa.senha = senha;
+            pessoa.telefone = telefone;
+            pessoa.dataNascimento = dataNascimento;
+
+            $.ajax({
+              url: "https://jsonplaceholder.typicode.com/posts",
+              type: "post",
+              dataType: "json",
+              contentType: "application/json",
+              data: JSON.stringify(pessoa),
+              success: function (data) {
+                console.log(data);
+                alert("Enviado com sucesso");
+
+                $("#nome").val("");
+                $("#email").val("");
+                $("#senha").val("");
+                $("#telefone").val("");
+                $("#data").val("");
+              },
+              error: function (xhr, resp, text) {
+                console.log(xhr, resp, text);
+                alert("Ocorreu um erro ao enviar os dados");
+              },
+            });
+          }
         }
       });
     });
