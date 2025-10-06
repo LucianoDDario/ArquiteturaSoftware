@@ -75,32 +75,32 @@
 
         <div>
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="c" />
+            <input type="checkbox" name="linguagem" id="c" />
             <label for="c">C</label>
           </div>
 
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="c++" />
+            <input type="checkbox" name="linguagem" id="c++" />
             <label for="c++">C++</label>
           </div>
 
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="html" />
+            <input type="checkbox" name="linguagem" id="html" />
             <label for="html">HTML</label>
           </div>
 
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="java" />
+            <input type="checkbox" name="linguagem" id="java" />
             <label for="java">Java</label>
           </div>
 
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="javascript" />
+            <input type="checkbox" name="linguagem" id="javascript" />
             <label for="javascript">Javascript</label>
           </div>
 
           <div class="colunaExperiencia">
-            <input type="checkbox" name="linguaem" id="python" />
+            <input type="checkbox" name="linguagem" id="python" />
             <label for="python">Python</label>
           </div>
         </div>
@@ -167,6 +167,15 @@
         const senha = $("#senha").val();
         const telefone = $("#telefone").val();
         const dataNascimento = $("#data").val();
+        const moeda = $("input[name='moeda']:checked").attr("id");
+        var linguagem = [];
+
+
+        $("input[name='linguagem']:checked").each(function(){
+          linguagem.push({
+            id: $(this).attr('id'),
+          });
+        });
 
         if (!nome || !email || !senha || !telefone || !dataNascimento) {
           alert("Preencha todos os campos");
@@ -190,6 +199,10 @@
           );
         } else if (!regexTelefoneCorreto.test(telefone)) {
           alert("O telefone precisa estar no formato 19 999998888");
+        } else if (!moeda) {
+          alert("Selecione um tipo de moeda");
+        } else if (linguagem.length == 0) {
+          alert("Selecione pelo menos uma linguagem de programação");
         } else {
           const dataEscrita = new Date(dataNascimento + "T00:00:00");
           const dataMinima = new Date("1980-01-01T00:00:00");
@@ -204,6 +217,8 @@
             pessoa.senha = senha;
             pessoa.telefone = telefone;
             pessoa.dataNascimento = dataNascimento;
+            pessoa.moeda = moeda;
+            pessoa.linguagem = linguagem;
 
             $.ajax({
               url: "https://jsonplaceholder.typicode.com/posts",
