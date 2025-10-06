@@ -8,136 +8,218 @@
     <title>Aula07</title>
   </head>
 
-<h1>TESTEEEEEEEEEEEEEEEEEEEEEE</h1>
-
   <body>
-    <div>
-      <h1>Formulário</h1>
+    
+    <div class="formsTodo">
 
-      <div class="formularioDados">
-        <div class="colunaCampos">
-          <label>Nome completo:</label>
-          <input type="text" name="campo" id="nome" required />
-        </div>
+      <div class="container">
+        <h1 class="tituloForms">Formulário</h1>
+        <div class="container2">
 
-        <div class="infoNascTel">
+          <div class="forms1">
           <div class="colunaCampos">
-            <label>Data de Nascimento:</label>
-            <input type="date" name="campo" id="data" required />
+            <label>Nome completo:</label>
+            <input class="input" type="text" name="campo" id="nome" placeholder="Digite seu nome" required />
+           </div>
+
+           <div class="infoNascTel">
+            <div class="colunaCampos">
+              <label>Data de Nascimento:</label>
+              <input class="input" type="date" name="campo" id="data" required />
+            </div>
+
+            <div class="colunaCampos">
+               <label>Telefone:</label>
+                <input class="input" type="tel" name="campo" id="telefone" placeholder="(00) 00000-0000" required />
+              </div>
+            </div>
+
+            <div class="colunaCampos">
+              <label>E-mail:</label>
+              <input class="input" type="email" name="campo" id="email" placeholder="Digite seu e-mail" required />
+            </div>
+
+            <div class="colunaCampos">
+              <label>Senha:</label>
+              <input class="input" type="password" name="campo" id="senha" placeholder="Digite sua senha" required />
           </div>
 
-          <div class="colunaCampos">
-            <label>Telefone:</label>
-            <input type="tel" name="campo" id="telefone" required />
+            <div class="fotoAtual">
+              <h1>Envie sua foto:</h1>
+              <div>
+                <input type="file" class="foto" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="forms2">
+
+              <div class="formularioAssuntos">
+                <h1>Seus assuntos favoritos:</h1>
+                <form class="assuntos">
+                  <select name="assuntos" id="assunto" multiple required>
+                    <option value="Artes">Artes</option>
+                    <option value="Artes">Esportes</option>
+                    <option value="Artes">Games</option>
+                    <option value="Artes">Música</option>
+                  </select>
+                </form>
+              </div>
+
+            <h1>Em que moeda prefere trabalhar?</h1>
+
+            <div class="formularioMoeda">
+              <div class="colunaMoeda">
+                <input type="radio" name="moeda" id="real" /><label for="real">Real</label>
+              </div>
+
+              <div class="colunaMoeda">
+                <input type="radio" name="moeda" id="dolar" /><label for="dolar">Dolar</label>
+              </div>
+
+              <div class="colunaMoeda">
+                <input type="radio" name="moeda" id="euro" /><label for="euro">Euro</label>
+              </div>
+
+              <div class="colunaMoeda">
+                <input type="radio" name="moeda" id="yen" /><label for="yen">Yen</label>
+              </div>
+            </div>
+
+            <div class="formularioExperiencia">
+              <h1>Selecione as linguagens que já estudou:</h1>
+
+              <div>
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="c" />
+                  <label for="c">C</label>
+                </div>
+
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="c++" />
+                  <label for="c++">C++</label>
+                </div>
+
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="html" />
+                  <label for="html">HTML</label>
+                </div>
+
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="java" />
+                  <label for="java">Java</label>
+                </div>
+
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="javascript" />
+                  <label for="javascript">Javascript</label>
+                </div>
+
+                <div class="colunaExperiencia">
+                  <input type="checkbox" name="linguagem" id="python" />
+                  <label for="python">Python</label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="colunaCampos">
-          <label>E-mail:</label>
-          <input type="email" name="campo" id="email" required />
-        </div>
-
-        <div class="colunaCampos">
-          <label>Senha:</label>
-          <input type="password" name="campo" id="senha" required />
+        <div class="comentarios">
+          <h1>Gostaria de fazer comentários?</h1>
+          <div class="campoComentarios">
+            <textarea name="comentarios" id="comentarios" placeholder="Digite seus comentarios aqui"></textarea>
+          </div>
         </div>
       </div>
 
-      <div class="fotoAtual">
-        <h1>Foto atual:</h1>
-        <div>
-          <input type="file" class="foto" required />
-        </div>
-      </div>
-
-      <div>
-        <h1>Em que moeda prefere trabalhar?</h1>
-
-        <div class="formularioMoeda">
-          <div class="colunaMoeda">
-            <input type="radio" name="moeda" id="real" /><label for="real">Real</label>
-          </div>
-
-          <div class="colunaMoeda">
-            <input type="radio" name="moeda" id="dolar" /><label for="dolar">Dolar</label>
-          </div>
-
-          <div class="colunaMoeda">
-            <input type="radio" name="moeda" id="euro" /><label for="euro">Euro</label>
-          </div>
-
-          <div class="colunaMoeda">
-            <input type="radio" name="moeda" id="yen" /><label for="yen">Yen</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="formularioExperiencia">
-        <h1>Selecione as linguagens que já estudou:</h1>
-
-        <div>
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="c" />
-            <label for="c">C</label>
-          </div>
-
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="c++" />
-            <label for="c++">C++</label>
-          </div>
-
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="html" />
-            <label for="html">HTML</label>
-          </div>
-
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="java" />
-            <label for="java">Java</label>
-          </div>
-
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="javascript" />
-            <label for="javascript">Javascript</label>
-          </div>
-
-          <div class="colunaExperiencia">
-            <input type="checkbox" name="linguagem" id="python" />
-            <label for="python">Python</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="formularioAssuntos">
-        <h1>Seus assuntos favoritos:</h1>
-        <form class="assuntos">
-          <select name="assuntos" id="assunto" multiple required>
-            <option value="Artes">Artes</option>
-            <option value="Artes">Esportes</option>
-            <option value="Artes">Games</option>
-            <option value="Artes">Música</option>
-          </select>
-        </form>
-      </div>
-
-      <div class="formularioComentarios">
-        <h1>Gostaria de fazer comentários?</h1>
-        <div class="campoComentarios">
-          <textarea name="comentarios" id="comentarios"></textarea>
-        </div>
-      </div>
-
-      <div class="formularioBotoes">
-        <button id="enviar">Enviar</button>
-        <button id="limpar">Limpar</button>
+      <div class="botoes">
+        <button class="limpar" id="enviar">Limpar</button>
+        <button class="enviar" id="enviar">Enviar</button>
       </div>
     </div>
+    
   </body>
 
   <style>
+
+    :root {
+      font-family: 'arial';
+      background-color: #BAE6FF;
+    }
+
+    body {
+      margin: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+
+    }
+
+    .tituloForms {
+      font-size: 28px;
+
+    }
+
+    h1{
+      font-size: 12px;
+      margin: 0px;
+    }
+
+    .formsTodo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;     
+      background-color: #FFFFFF;
+    }
+
+    .container2 {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 40px;
+      padding: 32px;
+    }
+
+    .forms1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .forms2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    label {
+      font-size: 12px;
+    }
+
+    .input {
+      border: none;
+      background-color: #F4F4F4;
+      border-bottom: 1px solid #8D8D8D;
+      height: 8px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }
+
+    .input::placeholder {
+      font-size: 14px;
+      color: #A8A8A8;
+    }
+
     .colunaCampos {
       display: flex;
       flex-direction: column;
+      
     }
 
     .infoNascTel {
@@ -146,11 +228,44 @@
       gap: 16px;
     }
 
+    .comentarios {
+      padding-top: 0px;
+      padding: 32px;
+    }
+
+    textarea {
+      border: none;
+      background-color: #F4F4F4;
+      border-bottom: 1px solid #8D8D8D;
+      width: 100%;
+      height: 168px;
+    }
+
     .botoes {
       display: flex;
       flex-direction: row;
-      gap: 40px;
+      width: 100%;
     }
+
+    button {
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      border: none;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+
+    .limpar {
+      background-color: #393939;
+    }
+
+    .enviar {
+      background-color: #0F62FE;
+    }
+
+
   </style>
 
   <script>
