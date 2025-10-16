@@ -1,3 +1,5 @@
+<!--Livia Cardozo de Souza, Luciano Dias Dario -->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -271,13 +273,21 @@
       }
     });
 
-    $(document).ready(function () {
+    $(document).ready(function limparTudo() {
       $("#limpar").click(function () {
         $("#nome").val("");
         $("#email").val("");
         $("#senha").val("");
         $("#telefone").val("");
         $("#data").val("");
+        $("input[name='moeda']").prop('checked',false);
+        $("input[name='linguagem']").prop('checked', false);
+        $("#arquivo").val('');
+        nomeArquivo.textContent = 'Nenhum arquivo selecionado'
+        $("#selectAssuntos option:selected").prop('selected', false);
+        $("#comentarios").val("");
+
+      
       });
 
       $("#enviar").click(function () {
@@ -287,6 +297,7 @@
         const telefone = $("#telefone").val();
         const dataNascimento = $("#data").val();
         const moeda = $("input[name='moeda']:checked").attr("id");
+        const comentarios = $("#comentarios").val();
         var linguagem = [];
 
 
@@ -338,8 +349,11 @@
             pessoa.dataNascimento = dataNascimento;
             pessoa.moeda = moeda;
             pessoa.linguagem = linguagem;
+            pessoa.comentarios = comentarios;
+            pessoa.foto = nomeArquivo.textContent;
 
             $.ajax({
+              
               url: "https://jsonplaceholder.typicode.com/posts",
               type: "post",
               dataType: "json",
