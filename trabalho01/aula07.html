@@ -9,47 +9,38 @@
   </head>
 
   <body>
-    <div>
-      <h1>Formulário</h1>
+    <div class="forms">
+      <h1 class="titulo">Formulário</h1>
 
       <div class="formularioDados">
-        <div class="colunaCampos">
-          <label>Nome completo:</label>
+        <div class="campoNome">
+          <label class="verde">Nome completo:</label>
           <input type="text" name="campo" id="nome" required />
         </div>
 
-        <div class="infoNascTel">
-          <div class="colunaCampos">
-            <label>Data de Nascimento:</label>
-            <input type="date" name="campo" id="data" required />
-          </div>
-
-          <div class="colunaCampos">
-            <label>Telefone:</label>
-            <input type="tel" name="campo" id="telefone" required />
-          </div>
-        </div>
-
-        <div class="colunaCampos">
-          <label>E-mail:</label>
+        <div class="campoEmail">
+          <label class="verde">E-mail:</label>
           <input type="email" name="campo" id="email" required />
         </div>
 
-        <div class="colunaCampos">
-          <label>Senha:</label>
+        <div class="campoSenha">
+          <label class="verde">Senha:</label>
           <input type="password" name="campo" id="senha" required />
         </div>
-      </div>
 
-      <div class="fotoAtual">
-        <h1>Foto atual:</h1>
-        <div>
-          <input type="file" class="foto" required />
+        <div class="campoTel">
+          <label class="verde">Telefone:</label>
+          <input type="tel" name="campo" id="telefone" required />
+        </div>
+        
+        <div class="campoNasc">
+          <label class="verde">Data de Nascimento:</label>
+          <input type="date" name="campo" id="data" required />
         </div>
       </div>
 
       <div>
-        <h1>Em que moeda prefere trabalhar?</h1>
+        <label class="verde">Em que moeda prefere receber o salário?</label>
 
         <div class="formularioMoeda">
           <div class="colunaMoeda">
@@ -71,7 +62,7 @@
       </div>
 
       <div class="formularioExperiencia">
-        <h1>Selecione as linguagens que já estudou:</h1>
+        <label class="verde">Selecione as linguagens que já estudou:</label>
 
         <div>
           <div class="colunaExperiencia">
@@ -106,26 +97,36 @@
         </div>
       </div>
 
+      <div class="fotoAtual">
+        <label class="verde">Foto atual:</label>
+        <div>
+          <label for="arquivo" class="botaoFoto">Escolher arquivo</label>
+          <input type="file" id="arquivo" class="foto" required hidden>
+          <span id="spanArquivo">Nenhum arquivo selecionado</span>
+        </div>
+      </div>
+
       <div class="formularioAssuntos">
-        <h1>Seus assuntos favoritos:</h1>
+        <label class="verde">Seus assuntos favoritos:</label>
         <form class="assuntos">
-          <select name="assuntos" id="assunto" multiple required>
-            <option value="Artes">Artes</option>
-            <option value="Artes">Esportes</option>
-            <option value="Artes">Games</option>
-            <option value="Artes">Música</option>
+          <select name="assuntos" id="selectAssuntos" multiple required>
+            <option value="Cor1">Artes</option>
+            <option value="Cor">Esportes</option>
+            <option value="Cor">Games</option>
+            <option value="Cor">Música</option>
           </select>
         </form>
       </div>
 
       <div class="formularioComentarios">
-        <h1>Gostaria de fazer comentários?</h1>
+        <label class="verde">Gostaria de fazer comentários?</label>
+      
         <div class="campoComentarios">
-          <textarea name="comentarios" id="comentarios"></textarea>
+          <textarea name="comentarios" id="comentarios" placeholder="Faça seus comentários aqui"></textarea>
         </div>
       </div>
 
-      <div class="formularioBotoes">
+      <div class="botoes">
         <button id="enviar">Enviar</button>
         <button id="limpar">Limpar</button>
       </div>
@@ -133,25 +134,138 @@
   </body>
 
   <style>
-    .colunaCampos {
+    body {
+      font-family: arial;
+      font-weight: bold;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
     }
 
-    .infoNascTel {
+    .forms {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .formularioDados{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .titulo {
+      color: blue;
+      display: flex;
+      justify-content: center;
+    }
+
+    label {
+      color: red;
+    }
+
+    input {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      color: #bfbebe;
+    }
+
+    option {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: ;
+      color: #a8a6a6;
+    }
+
+    .campoNome {
+      display: flex;
+      gap: 37px;
+    }
+
+    .campoEmail {
+      display: flex;
+      gap: 109px;
+    }
+
+    .campoSenha {
+      display: flex;
+      gap: 109px;
+    }
+
+    .campoTel {
+      display: flex;
+      gap: 93px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+    accent-color: grey; 
+    }
+
+
+    .fotoAtual {
+      display: flex;
+      gap: 80px;
+    }
+
+    .foto {
+      color: red;
+    }
+
+    .botaoFoto {
+      color: black;
+      border: 1px solid, #4F4F4F;
+      border-radius: 2px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      background-color: #f1f1f1;
+      padding-left: 7px;
+      padding-right: 7px;
+      padding-bottom: 2px;
+      padding-top: 2px;
+    }
+
+    .botaoFoto:hover {
+      background-color: #E5E5E5;
+    }
+    
+    span {
+      font-family: Arial, Helvetica, sans-serif;
+      color: red;
+    }
+    .verde{
+      color: green;
+    }
+
+    .fotoAtual {
       display: flex;
       flex-direction: row;
-      gap: 16px;
+    }
+
+    textarea{
+      width: 350px;
+      height: 80px;
     }
 
     .botoes {
       display: flex;
-      flex-direction: row;
-      gap: 40px;
+      gap: 108px;
     }
+
   </style>
 
   <script>
+
+    const inputArquivo = document.getElementById('arquivo');
+    const nomeArquivo = document.getElementById('spanArquivo');
+
+    inputArquivo.addEventListener('change', function () {
+      if (inputArquivo.files.length > 0) {
+      nomeArquivo.textContent = inputArquivo.files[0].name;
+      } else {
+      nomeArquivo.textContent = 'Nenhum arquivo selecionado';
+      }
+    });
+
     $(document).ready(function () {
       $("#limpar").click(function () {
         $("#nome").val("");
