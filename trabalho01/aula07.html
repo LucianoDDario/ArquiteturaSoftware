@@ -31,13 +31,13 @@
         </div>
 
         <div class="campoTel">
-          <label class="verde">Telefone para contato:</label>
+          <label class="verde">Telefone:</label>
           <input type="tel" name="campo" id="telefone" required />
         </div>
-        
+
         <div class="campoNasc">
           <label class="verde">Data de Nascimento:</label>
-          <input type="date" name="campo" id="data" required />
+          <input type="date" name="campoNasc" id="data" required />
         </div>
       </div>
 
@@ -103,7 +103,7 @@
         <label class="verde">Foto atual:</label>
         <div>
           <label for="arquivo" class="botaoFoto">Escolher arquivo</label>
-          <input type="file" id="arquivo" class="foto" required hidden>
+          <input type="file" id="arquivo" class="foto" required hidden />
           <span id="spanArquivo">Nenhum arquivo selecionado</span>
         </div>
       </div>
@@ -112,19 +112,23 @@
         <label class="verde">Seus assuntos favoritos:</label>
         <form class="assuntos">
           <select name="assuntos" id="selectAssuntos" multiple required>
-            <option value="Cor1">Artes</option>
-            <option value="Cor">Esportes</option>
-            <option value="Cor">Games</option>
-            <option value="Cor">Música</option>
+            <option value="Artes">Artes</option>
+            <option value="Esportes">Esportes</option>
+            <option value="Games">Games</option>
+            <option value="Música">Música</option>
           </select>
         </form>
       </div>
 
       <div class="formularioComentarios">
         <label class="verde">Gostaria de fazer comentários?</label>
-      
+
         <div class="campoComentarios">
-          <textarea name="comentarios" id="comentarios" placeholder="Faça seus comentários aqui"></textarea>
+          <textarea
+            name="comentarios"
+            id="comentarios"
+            placeholder="Faça seus comentários aqui"
+          ></textarea>
         </div>
       </div>
 
@@ -149,7 +153,7 @@
       gap: 5px;
     }
 
-    .formularioDados{
+    .formularioDados {
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -159,7 +163,6 @@
       color: blue;
       display: flex;
       justify-content: center;
-      margin: 0;
     }
 
     label {
@@ -167,50 +170,49 @@
     }
 
     input {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
       font-weight: bold;
-      color: grey;
+      color: #bfbebe;
+    }
+
+    input[name="campo"]{
+      width: 300px;
     }
 
     option {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: "Courier New", Courier, monospace;
       font-weight: bold;
-      color: grey;
+      color: #a8a6a6;
     }
 
     .campoNome {
       display: flex;
-      gap: 47px;
+      gap: 37px;
     }
 
     .campoEmail {
       display: flex;
-      gap: 119px;
+      gap: 109px;
     }
 
     .campoSenha {
       display: flex;
-      gap: 119px;
+      gap: 109px;
     }
 
     .campoTel {
       display: flex;
-      gap: 2px;
-    }
-
-    .campoNasc {
-      display: flex;
-      gap: 14px;
+      gap: 93px;
     }
 
     input[type="checkbox"],
     input[type="radio"] {
-    accent-color: grey; 
+      accent-color: grey;
     }
 
     .fotoAtual {
       display: flex;
-      gap: 97px;
+      gap: 80px;
     }
 
     .foto {
@@ -219,7 +221,7 @@
 
     .botaoFoto {
       color: black;
-      border: 1px solid, #4F4F4F;
+      border: 1px solid, #4f4f4f;
       border-radius: 2px;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
@@ -232,14 +234,14 @@
     }
 
     .botaoFoto:hover {
-      background-color: #E5E5E5;
+      background-color: #e5e5e5;
     }
-    
+
     span {
       font-family: Arial, Helvetica, sans-serif;
       color: red;
     }
-    .verde{
+    .verde {
       color: green;
     }
 
@@ -248,29 +250,41 @@
       flex-direction: row;
     }
 
-    textarea{
+    textarea {
       width: 350px;
       height: 80px;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     .botoes {
       display: flex;
       gap: 108px;
     }
-
   </style>
 
   <script>
+    const inputArquivo = document.getElementById("arquivo");
+    const nomeArquivo = document.getElementById("spanArquivo");
+    let fotoBase64 = null;
 
-    const inputArquivo = document.getElementById('arquivo');
-    const nomeArquivo = document.getElementById('spanArquivo');
-
-    inputArquivo.addEventListener('change', function () {
+    inputArquivo.addEventListener("change", function () {
       if (inputArquivo.files.length > 0) {
-      nomeArquivo.textContent = inputArquivo.files[0].name;
+        const file = inputArquivo.files[0];
+        nomeArquivo.textContent = inputArquivo.files[0].name;
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          fotoBase64 = e.target.result;
+        };
+
+        reader.onerror = function (e) {
+          alert("Erro ao ler o arquivo", e);
+        };
+        reader.readAsDataURL(file);
       } else {
-      nomeArquivo.textContent = 'Nenhum arquivo selecionado';
+        nomeArquivo.textContent = "Nenhum arquivo selecionado";
+        fotoBase64 = null;
       }
     });
 
@@ -281,14 +295,15 @@
         $("#senha").val("");
         $("#telefone").val("");
         $("#data").val("");
-        $("input[name='moeda']").prop('checked',false);
-        $("input[name='linguagem']").prop('checked', false);
-        $("#arquivo").val('');
-        nomeArquivo.textContent = 'Nenhum arquivo selecionado'
-        $("#selectAssuntos option:selected").prop('selected', false);
+        $("input[name='moeda']").prop("checked", false);
+        $("input[name='linguagem']").prop("checked", false);
+        $("#arquivo").val("");
+        nomeArquivo.textContent = "Nenhum arquivo selecionado";
+        $("#selectAssuntos option:selected").prop("selected", false);
         $("#comentarios").val("");
+        $("#selectAssuntos option:selected").prop("selected", false);
 
-      
+        fotoBase64 = null;
       });
 
       $("#enviar").click(function () {
@@ -300,11 +315,11 @@
         const moeda = $("input[name='moeda']:checked").attr("id");
         const comentarios = $("#comentarios").val();
         var linguagem = [];
+        const assunto = $("#selectAssuntos").val();
 
-
-        $("input[name='linguagem']:checked").each(function(){
+        $("input[name='linguagem']:checked").each(function () {
           linguagem.push({
-            id: $(this).attr('id'),
+            id: $(this).attr("id"),
           });
         });
 
@@ -334,6 +349,12 @@
           alert("Selecione um tipo de moeda");
         } else if (linguagem.length == 0) {
           alert("Selecione pelo menos uma linguagem de programação");
+        } else if (comentarios.length == 0) {
+          alert("Preencha o campo comentários");
+        } else if (fotoBase64 == null) {
+          alert("Adicione uma foto");
+        } else if (!assunto || assunto.length == 0) {
+          alert("Selecione pelo menos um assunto favorito");
         } else {
           const dataEscrita = new Date(dataNascimento + "T00:00:00");
           const dataMinima = new Date("1980-01-01T00:00:00");
@@ -351,10 +372,10 @@
             pessoa.moeda = moeda;
             pessoa.linguagem = linguagem;
             pessoa.comentarios = comentarios;
-            pessoa.foto = nomeArquivo.textContent;
+            pessoa.foto = fotoBase64;
+            pessoa.assuntosFavoritos = assunto;
 
             $.ajax({
-              
               url: "https://jsonplaceholder.typicode.com/posts",
               type: "post",
               dataType: "json",
@@ -369,6 +390,13 @@
                 $("#senha").val("");
                 $("#telefone").val("");
                 $("#data").val("");
+                $("input[name='moeda']").prop("checked", false);
+                $("input[name='linguagem']").prop("checked", false);
+                $("#arquivo").val("");
+                nomeArquivo.textContent = "Nenhum arquivo selecionado";
+                $("#selectAssuntos option:selected").prop("selected", false);
+                $("#comentarios").val("");
+                fotoBase64 = null;
               },
               error: function (xhr, resp, text) {
                 console.log(xhr, resp, text);
